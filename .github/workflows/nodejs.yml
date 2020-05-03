@@ -1,8 +1,9 @@
 name: LINE notify
 
 on:
-  schedule:
-  - cron:  '*/2 * * * *'
+  push:
+    branches: [ master ]
+    # プッシュ時に動作する
 
 jobs:
   build:
