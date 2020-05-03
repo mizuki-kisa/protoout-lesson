@@ -29,8 +29,9 @@ async function getRequest() {
   try {
     foxResponse = await axios.get(`https://randomfox.ca/floof/`);
     console.log(foxResponse.data.image);
-    config.data.imageThumbnail = foxResponse.data.image;
-    config.data.imageFullsize = foxResponse.data.image;
+    config.data.message += "aaa";
+    //config.data.imageThumbnail = foxResponse.data.image;
+    //config.data.imageFullsize = foxResponse.data.image;
     
   } catch (error) {
     console.error(error);
