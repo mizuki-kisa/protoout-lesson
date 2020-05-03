@@ -25,6 +25,16 @@ let config = {
 async function getRequest() {
 
   ////// LINE Notify に送る ////////////////////////
+  let foxResponse;
+  try {
+    foxResponse = await axios.get(`https://randomfox.ca/floof/`);
+    console.log(foxResponse.data.image);
+    config.data.imageThumbnail = foxResponse.data.image;
+    config.data.imageFullsize = foxResponse.data.image;
+    
+  } catch (error) {
+    console.error(error);
+  }
 
   try {
     const responseLINENotify = await axios.request(config);
