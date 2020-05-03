@@ -1,1 +1,1 @@
-console.log('Hello ProtoOut!');
+console.log('メッセージを変更してみた');
