@@ -1,9 +1,5 @@
 name: LINE notify
 
-on:
-  schedule:
-    - cron:  '*/10 * * * *'
-
 jobs:
   build:
 
