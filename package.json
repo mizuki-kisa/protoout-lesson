@@ -1,0 +1,23 @@
+{
+  "name": "01-06-git",
+  "version": "1.0.0",
+  "description": "プロトアウトスタジオのレッスン",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mizuki-kisa/protoout-lesson.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mizuki-kisa/protoout-lesson/issues"
+  },
+  "homepage": "https://github.com/mizuki-kisa/protoout-lesson#readme",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
