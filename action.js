@@ -18,7 +18,7 @@ let config = {
         'Authorization': 'Bearer ' + LINE_NOTIFY_TOKEN
     },
     data: qs.stringify({
-        message: 'ProtoOut Studioからの通知だよー！',
+        message: 'ProtoOut Studioからの通知だよー！GitHub Actionsだよー！',
     })
 }
 
