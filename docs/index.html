@@ -5,51 +5,22 @@
   </head>
   <body>
     <h1>ROCKET</h1>
-
+    <p>近々発射予定のロケット情報一覧</p>
     
     <div id="app">
-        <a v-bind:href="wikiURL" target="_blank">
-        <div>
-            <h2>{{ name }}</h2>
-            <h3>{{agency}}</h3>
-            <img v-bind:src="rocket">
+        
+        <div v-for='item in rockets'>
+            <a v-bind:href="item.wikiURL" target="_blank" >
+            <img v-bind:src="item.img">
+            <h2>{{ item.name }}</h2>
+            <h3>{{ item.agencie }}</h3>
+            </a>
+            <dl>
+                <dt>Mission: {{item.missionttl}}</dt>
+                <dd>{{item.missiondesc}}</dd>
+            </dl>
         </div>
-        </a>
-        <a v-bind:href="wikiURL" target="_blank">
-        <div>
-            <h2>{{ name }}</h2>
-            <h3>{{agency}}</h3>
-            <img v-bind:src="rocket">
-        </div>
-        </a>
-        <a v-bind:href="wikiURL" target="_blank">
-        <div>
-            <h2>{{ name }}</h2>
-            <h3>{{agency}}</h3>
-            <img v-bind:src="rocket">
-        </div>
-        </a>
-        <a v-bind:href="wikiURL" target="_blank">
-        <div>
-            <h2>{{ name }}</h2>
-            <h3>{{agency}}</h3>
-            <img v-bind:src="rocket">
-        </div>
-        </a>
-        <a v-bind:href="wikiURL" target="_blank">
-        <div>
-            <h2>{{ name }}</h2>
-            <h3>{{agency}}</h3>
-            <img v-bind:src="rocket">
-        </div>
-        </a>
-        <a v-bind:href="wikiURL" target="_blank">
-        <div>
-            <h2>{{ name }}</h2>
-            <h3>{{agency}}</h3>
-            <img v-bind:src="rocket">
-        </div>
-        </a>
+    
         
     </div>
 
@@ -60,20 +31,32 @@
     const app = new Vue({
             el: '#app',
             data: {
-                name: "",
-                rocket: "",
-                agency:"",
-                wikiURL:"",
+                rockets:[
+                ],
             },
 
             methods: {
                 getData: async function(){
-                    const response = await axios.get('https://launchlibrary.net/1.3/launch/next/5')
-                    console.log(response.data);
-                    this.name = response.data.launches[1].name;
-                    this.rocket = response.data.launches[1].rocket.imageURL;
-                    this.agency = response.data.launches[1].rocket.agencies[0].name;
-                    this.wikiURL = response.data.launches[1].rocket.wikiURL;
+                    const response = await axios.get('https://launchlibrary.net/1.3/launch/next/12')
+                    console.log(response.data.launches);
+                
+                    response.data.launches.forEach(element => {
+                        var agencie_ = 'none';
+                        var mission_ = 'none';
+                        var mission_desc = 'none';
+                        (!element.rocket.agencies) ? agencie_ = 'none' : agencie_ = element.rocket.agencies[0].name;
+                        (!element.missions[0]) ? mission_ = 'none' : (mission_ = element.missions[0].name, mission_desc = element.missions[0].description);
+
+                        this.rockets.push({
+                            name: element.name,
+                            img: element.rocket.imageURL,
+                            agencie: agencie_,
+                            wikiURL: element.rocket.wikiURL,
+                            missionttl: mission_,
+                            missiondesc: mission_desc,
+                        });
+                    });
+
                 },
             },
 
