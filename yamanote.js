@@ -13,14 +13,17 @@ async function updateData(newData){
 async function getRequest() {
   let response;
   try {
-    response = await axios.get('https://transit.yahoo.co.jp/traininfo/detail/21/0/');
+    response = await axios.get('https://transit.yahoo.co.jp/traininfo/detail/82/0/');
     let html = response.data;
     html = html.replace(/\r?\n/g,""); //整形1: 改行などを削除して整形しやすくする
+    let ttl = html.match(/<h1 class="title">(.*?)<\/h1>/)[0];
     let unko = html.match(/id="mdServiceStatus">(.*?)<\/div>/)[1];
     unko = unko.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,''); //整形2: タグを削除
+    ttl = ttl.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,''); //整形2: タグを削除
     console.log(unko);
+    console.log(ttl);
 
-    await updateData({msg: unko}); //データ更新関数を実行
+    await updateData({msg: unko, title: ttl}); //データ更新関数を実行
   } catch (error) {
     console.error(error);
   }
