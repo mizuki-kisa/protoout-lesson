@@ -21,7 +21,7 @@
             </dl>
         </div>
     
-        
+
     </div>
 
 
@@ -37,7 +37,7 @@
 
             methods: {
                 getData: async function(){
-                    const response = await axios.get('https://launchlibrary.net/1.3/launch/next/12')
+                    const response = await axios.get('https://launchlibrary.net/1.3/launch/next/30')
                     console.log(response.data.launches);
                 
                     response.data.launches.forEach(element => {
