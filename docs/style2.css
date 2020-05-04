@@ -1,0 +1,41 @@
+html{
+    width:100%;
+}
+
+body{
+    width:960px;
+    margin: auto;
+    display: block;
+    background: #0a1244;
+    color:#ffffff;
+}
+
+h1{
+    font-size: 5em;
+    color:rgb(49.5%, 99.1%, 96.6%);
+    margin: 60px auto;
+    text-align: center;
+}
+h2{
+    font-size: 2em;
+}
+
+img{
+    width:240px;
+}
+
+#app{
+    display: grid;
+    grid-template-columns:300px 300px 300px;
+    grid-gap: 20px;
+}
+
+a{
+    color:#ffffff;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #fff024;
+    opacity:0.8;
+}

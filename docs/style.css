@@ -31,3 +31,7 @@ div{
 a{
     font-size: 3em;
 }
+
+a:hover{
+    color: #fff024;
+}
